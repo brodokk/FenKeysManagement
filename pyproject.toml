@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "FenKeysManagement"
+name = "fenkeysmanagement"
 version = "1.0.0"
 description = ""
 authors = ["brodokk"]
 
 [tool.poetry.scripts]
-fenkm = 'FenKeysManagement:main'
+fenkm = 'fenkeysmanagement:main'
 
 [tool.poetry.dependencies]
 python = "^3.7"
