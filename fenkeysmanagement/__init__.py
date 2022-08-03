@@ -103,11 +103,22 @@ class KeyManager:
         return tabulate(table, headers, tablefmt="grid")
 
     def reload_keys(self):
-        self.keys = self._read_file()
+        keys_json = self._read_keyfile()
+        for key in keys_json:
+            if not self.keys.contains('key', key['key']):
+                self.keys.append(Key(**key), 'id')
 
-    def key_revoked(self):
-        if self.keys.contains('key', data_json['auth_key']):
-            if not self.keys.get('key', data_json['auth_key']).revoked:
+    def key_revoked(self, id=None, key=None):
+        if not id and not key:
+            raise KeyManagerException(
+                'When revoke a key you must set either `id` or `key`')
+        if id and key:
+            raise KeyManagerException(
+                "When revoke a key `id` and `key` can't be set at the same time")
+        action_name = 'id' if id else 'key'
+        action_data = id if id else key
+        if self.keys.contains(action_name, action_data):
+            if not self.keys.get(action_name, action_data).revoked:
                 return True
         return False
 
