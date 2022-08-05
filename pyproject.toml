@@ -3,6 +3,7 @@ name = "fenkeysmanagement"
 version = "1.0.0"
 description = ""
 authors = ["brodokk"]
+readme = "README.md"
 
 [tool.poetry.scripts]
 fenkm = 'fenkeysmanagement:main'
