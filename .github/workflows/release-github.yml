@@ -1,8 +1,8 @@
-name: Publish package
+name: Publish package on Github
 on: push
 
 jobs:
-  build-n-release:
+  build-n-publish-github:
     name: Build and release package
     runs-on: ubuntu-latest
     steps:

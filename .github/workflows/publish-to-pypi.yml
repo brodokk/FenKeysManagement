@@ -1,8 +1,8 @@
-name: Publish package
+name: Publish package on PyPI
 on: push
 
 jobs:
-  build-n-publish:
+  build-n-publish-pypi:
     name: Build and publish package
     runs-on: ubuntu-latest
     steps:
