@@ -2,8 +2,8 @@ name: Publish package
 on: push
 
 jobs:
-  build-n-publish:
-    name: Build and publish package
+  build-n-release:
+    name: Build and release package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
