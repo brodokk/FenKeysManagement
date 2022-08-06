@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fenkeysmanagement"
-version = "1.0.0"
+version = "1.0.1"
 description = "Simple key management. Generate tokens for any usage."
 authors = ["brodokk <brodokk@brodokk.space>"]
 readme = "README.md"
