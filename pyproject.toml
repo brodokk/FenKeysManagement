@@ -1,9 +1,15 @@
 [tool.poetry]
 name = "fenkeysmanagement"
 version = "1.0.0"
-description = ""
-authors = ["brodokk"]
+description = "Simple key management. Generate tokens for any usage."
+authors = ["brodokk <brodokk@brodokk.space>"]
 readme = "README.md"
+license = "GPL-3.0-only"
+homepage = "https://github.com/brodokk/FenKeysManagement"
+repository = "https://github.com/brodokk/FenKeysManagement"
+include = [
+    "LICENSE",
+]
 
 [tool.poetry.scripts]
 fenkm = 'fenkeysmanagement:main'
