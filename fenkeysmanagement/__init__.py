@@ -7,7 +7,6 @@ import argparse
 import json
 import secrets
 import dataclasses
-from typing import Optional, List
 
 from tabulate import tabulate
 
@@ -31,7 +30,8 @@ class CollisionsList(list):
             if getattr(item, search_field) == search_value:
                 setattr(item, field, value)
                 return True
-        raise ValueError('No value {0} found for field {1}'.format(search_value, search_field))
+        raise ValueError(
+            'No value {0} found for field {1}'.format(search_value, search_field))
 
     def contains(self, field, value):
         for item in self:
@@ -168,7 +168,8 @@ class keyManagerAction(argparse.Action):
                 args_value = value.split('=')[1]
                 args[args_key] = args_value
         if type(action) == str:
-            method_list = [func for func in dir(KeyManager) if callable(getattr(KeyManager, func))]
+            method_list = [
+                func for func in dir(KeyManager) if callable(getattr(KeyManager, func))]
             if action in method_list:
                 try:
                     getattr(KeyManager(), action)(**args)
@@ -180,24 +181,34 @@ class keyManagerAction(argparse.Action):
                 raise KeyManagerException
         sys.exit()
 
+
 def main():
-    parser = argparse.ArgumentParser(description='Simple key management. Generate tokens for any usage.')
+    parser = argparse.ArgumentParser(
+        description='Simple key management. Generate tokens for any usage.')
     parser.add_argument(
         'genkey', nargs='*', action=keyManagerAction,
-        help='Generate a new key. Optional argument comment in the format comment=<comment>')
+        help='Generate a new key. '
+        'Optional argument comment in the format comment=<comment>'
+    )
     parser.add_argument(
         'revokekey', nargs='*', type=int, action=keyManagerAction,
-        help='Revoke a key. The format should be <key>=<value> where <key> cant be the id or the key directly')
+        help='Revoke a key. '
+        'The format should be <key>=<value> where <key> '
+        'cant be the id or the key directly'
+    )
     parser.add_argument(
         'listkeys', nargs='*', action=keyManagerAction,
         help='List all the key available')
     try:
-        args = parser.parse_args()
+        parser.parse_args()
         print(parser.print_help())
     except Exception as e:
-        if e.__class__.__name__ not in  ['KeyManagerException', 'KeyManagerActionException']:
+        if e.__class__.__name__ not in [
+            'KeyManagerException', 'KeyManagerActionException'
+        ]:
             raise e
         print(parser.print_help())
+
 
 if __name__ == '__main__':
     main()
